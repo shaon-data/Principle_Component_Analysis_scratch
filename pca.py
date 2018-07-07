@@ -1,5 +1,6 @@
-from sklearn.preprocessing import StandardScaler
 import numpy as np
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
 
 def covarience_matrix(X):
     #standardizing data
@@ -30,6 +31,9 @@ def eign_decomposition(cov_mat):
     eign_pairs = [ (np.abs(eign_vals[i]), eign_vecs[:,i] ) for i in range(len(eign_vals)) ]
     return eign_pairs
 
+data = pd.read_csv('iris.csv')
+data_features = data.ix[:,:-1]
+data_label = data.ix[:,4]
 
 #covariance_matrix
 cov_mat = covarience_matrix(data_features)
