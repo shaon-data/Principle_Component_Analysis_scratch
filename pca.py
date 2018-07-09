@@ -15,7 +15,15 @@ def covarience_matrix(X):
     cov_mat = np.cov(X_std.T)
     return cov_mat
 
+def max_min_bi_corel(X):
+    a = covarience_matrix(X)
+    a[a>=1] = 0
+    maxcor = np.argwhere(a.max() == a)[0] # reverse 1
 
+    b = covarience_matrix(x)
+    mincor = np.argwhere(b.min() == b)[0] # reverse 1
+
+    return maxcor,mincor
 
 def eign_decomposition(cov_mat):
     #eign_decomposition
